@@ -30,19 +30,6 @@
  * @returns {void}
  */
 export function addProduct(name, price) {
-  // TODO: createElement for each piece, fill them in, append them together,
-  // then append the card to #list. Nothing appears until that last step.
-  throw new Error("addProduct is not written yet");
-}
-
-/**
- * Removes the card with that name, if there is one.
- * Does nothing at all if there is not.
- *
- * @param {string} name
- * @returns {void}
- */
-export function addProduct(name, price) {
   const list = document.querySelector("#list");
   const card = document.createElement("li");
   card.classList.add("card");
@@ -55,6 +42,24 @@ const priceTag = document.createElement("p");
 
 card.append(heading, priceTag);
 list.append(card);
+}
+/**
+ * Removes the card with that name, if there is one.
+ * Does nothing at all if there is not.
+ *
+ * @param {string} name
+ * @returns {void}
+ */
+export function removeProduct(name) {
+  const cards = Array.from(document.querySelectorAll("#list .card"));
+
+  const card = cards.find(card =>
+    card.querySelector("h3").textContent === name
+  );
+
+  if (card) {
+    card.remove();
+  }
 }
 
 /**
